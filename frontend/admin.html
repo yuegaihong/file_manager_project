@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员 - 文件管理系统</title>
+    <style>
+        /* 让背景图片适应屏幕并铺满 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('../beij.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* 使背景高度为100%视窗高度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* 统一布局和样式 */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* 按钮样式 */
+        button {
+            padding: 10px;
+            background-color: #0eef43;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-buttons button {
+            width: 48%;
+        }
+
+        .file-actions {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .file-actions button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>管理员面板</h2>
+
+        <!-- 用户管理 -->
+        <h3>用户管理</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>邮箱</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user01</td>
+                    <td>user01@example.com</td>
+                    <td>
+                        <button onclick="deleteUser('user01')">删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user02</td>
+                    <td>user02@example.com</td>
+                    <td>
+                        <button onclick="deleteUser('user02')">删除</button>
+                    </td>
+                </tr>
+                <!-- 可动态加载更多用户 -->
+            </tbody>
+        </table>
+
+        <!-- 文件管理 -->
+        <h3>文件管理</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>文件名</th>
+                    <th>上传时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>file01.txt</td>
+                    <td>2024-10-17</td>
+                    <td class="file-actions">
+                        <button onclick="deleteFile('file01.txt')">删除</button>
+                        <button onclick="downloadFile('file01.txt')">下载</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>file02.jpg</td>
+                    <td>2024-10-16</td>
+                    <td class="file-actions">
+                        <button onclick="deleteFile('file02.jpg')">删除</button>
+                        <button onclick="downloadFile('file02.jpg')">下载</button>
+                    </td>
+                </tr>
+                <!-- 可动态加载更多文件 -->
+            </tbody>
+        </table>
+
+        <!-- 上传文件功能 -->
+        <h3>上传文件</h3>
+        <div class="action-buttons">
+            <!-- 选择文件的按键 -->
+            <input type="file" id="fileInput" />
+            <!-- 上传文件的按键 -->
+            <button onclick="uploadFile()">上传文件</button>
+        </div>
+    </div>
+
+    <script>
+        // 模拟删除用户功能
+        function deleteUser(username) {
+            if (confirm(`确认删除用户 ${username} 吗？`)) {
+                // 调用后台 API 删除用户的逻辑
+                alert(`用户 ${username} 已删除`);
+            }
+        }
+
+        // 模拟删除文件功能
+        function deleteFile(filename) {
+            if (confirm(`确认删除文件 ${filename} 吗？`)) {
+                // 调用后台 API 删除文件的逻辑
+                alert(`文件 ${filename} 已删除`);
+            }
+        }
+
+        // 模拟下载文件功能
+        function downloadFile(filename) {
+            // 调用文件下载逻辑
+            alert(`正在下载文件: ${filename}`);
+        }
+
+        // 模拟上传文件功能
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('请先选择一个文件');
+            } else {
+                const fileName = fileInput.files[0].name;
+                // 调用文件上传逻辑
+                alert(`文件 ${fileName} 上传成功`);
+            }
+        }
+    </script>
+</body>
+</html>

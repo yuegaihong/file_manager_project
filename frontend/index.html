@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件管理系统</title>
+    <style>
+        /* 让背景图片适应屏幕并铺满 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('../beij.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* 使背景高度为100%视窗高度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 按钮容器的样式 */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+            text-align: center; /* 文字水平居中 */
+        }
+
+        /* 按钮的样式 */
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1f2420;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0; /* 添加间距 */
+            font-size: 16px; /* 增大字体 */
+        }
+
+        button:hover {
+            background-color: #b5b5e2;
+        }
+
+        /* 链接的样式 */
+        a {
+            color: #092eff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.location.href='login.html'">登录</button>
+        <button onclick="window.location.href='register.html'">注册</button>
+    </div>
+</body>
+</html>
